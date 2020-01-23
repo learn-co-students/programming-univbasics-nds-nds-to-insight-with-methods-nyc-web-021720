@@ -25,8 +25,8 @@ end
   totals = {}
 
   while director_index < nds.length do
-    director_name = nds[director_index]
-    totals[director_name[:name]] = gross_for_director(director_name)
+    director_name = nds[director_index][:name]
+    totals[director_name] = gross_for_director(director_name)
     director_index += 1
   end
 

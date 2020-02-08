@@ -45,3 +45,4 @@ def directors_totals(nds)
 
 end
 
+#updated to work

@@ -1,35 +1,41 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'directors_database'
 
-# Find a way to accumulate the :worldwide_grosses and return that Integer
-# using director_data as input
-def gross_for_director(director_data)
-   total = 0
+  
+def gross_for_director(directors_data)
+  
+  i = 0 
+  total = 0 
+  while i < directors_data[:movies].length
+  total += directors_data[:movies][i][:worldwide_gross]
+  i += 1
+end 
+total
+  
+ end
+
+ def directors_totals(nds) 
   index = 0
-
-  while index < director_data[:movies].length do
-    total += director_data[:movies][index][:worldwide_gross]
-    index += 1
-  end
-
-  total
+  arr = []
+   while index < nds.length
+    i = nds[index]
+   index += 1 
+  name_total = i[:name],gross_for_director(i)
+  arr << name_total
+end
+arr.to_h
 end
 
-# Write a method that, given an NDS creates a new Hash
-# The return value should be like:
-#
-# { directorOne => allTheMoneyTheyMade, ... }
 
-  def directors_totals(nds)
-  director_index = 0
-  totals = {}
-
-  while director_index < nds.length do
-    director_name = nds[director_index]
-    totals[director_name[:name]] = gross_for_director(director_name)
-    director_index += 1
-  end
-
-  totals
-end
-
+# def directors_totals(nds) 
+  #index = 0
+  #arr = []
+  # while index < nds.length
+   # i = nds[index][:name]
+  # index += 1 
+ # name_total = i,gross_for_director(nds[index])   #why does this method not work. if I put nds[index] in argument i get an error that talks about error of while loop in first method
+ # arr << name_total
+#end
+#arr.to_h
+#end
+  
